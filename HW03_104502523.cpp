@@ -38,10 +38,27 @@ int main() {
 }
 
 void printall(listNode *p){
+    for(listPointer i = p; i != NULL; i = i->next) printf("%d ", i->value);
+    printf("\n");
 }
 listPointer addlistNode(listNode *p,int n){
+    listPointer i = p, temp = new listNode;
+    temp->value = n; temp->next = NULL;
+    if(!i) return temp;
+    while(i->next && i->next->value < n) i = i->next;
+    if(i == p){
+	if(n < i->value){
+	    temp->next = p;
+	    return temp;
+	}
+    }
+    temp->next = i->next;
+    i->next = temp;
+    return p;
 }
 listPointer reverselist(listNode *p){
+    return p;
 }
 listPointer combinelist(listNode *p1,listNode *p2){
+    return p1;
 }
