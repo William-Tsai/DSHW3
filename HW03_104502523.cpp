@@ -57,7 +57,12 @@ listPointer addlistNode(listNode *p,int n){
     return p;
 }
 listPointer reverselist(listNode *p){
-    return p;
+    if(!p->next) return p;
+    listPointer end = p, temp = reverselist(p->next), i = temp;
+    while(i->next)  i = i->next;
+    i->next = end;
+    end->next = NULL;
+    return temp;
 }
 listPointer combinelist(listNode *p1,listNode *p2){
     return p1;
