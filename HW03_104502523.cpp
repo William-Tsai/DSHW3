@@ -65,5 +65,17 @@ listPointer reverselist(listNode *p){
     return temp;
 }
 listPointer combinelist(listNode *p1,listNode *p2){
-    return p1;
+    listPointer i = NULL, *temp = &i;
+    while(p1 || p2){
+	if(!p2 || (p1 && p1->value < p2->value)){
+	    *temp = p1;
+	    p1 = p1->next;
+	}else if(p2){
+	    *temp = p2;
+	    p2 = p2->next;
+	}
+	(*temp)->next = NULL;
+	temp = &((*temp)->next);
+    }
+    return i;
 }
